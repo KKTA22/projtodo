@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-
+import '../App.css';
 
 
 const Todo=()=>{
@@ -53,7 +53,7 @@ const Todo=()=>{
 
 
         {tasks.map((task)=>(
-            <div className='task' key={task.nam}>
+            <div className={task.comp?"yes":"no"} key={task.nam}>
             <h2 className="taskc">{task.nam} </h2>
             <h3>completed:{task.comp?"yes":"no"}</h3>
             <button t={task.nam} onClick={subdel}> toggle completetion </button>
