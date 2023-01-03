@@ -7,8 +7,14 @@ const Todo=()=>{
     const [ntask,setntask]= useState()
     const subhand=(event)=>{
         event.preventDefault()
-        settasks([...tasks,{nam:ntask,comp:false}])
+
+        if (ntask!==""){
+        settasks([{nam:ntask,comp:false},...tasks])
         setntask("")
+        }
+        else {
+            alert("empty text")
+        }
     }
     const subdel=(event)=>{
         event.preventDefault()
@@ -23,6 +29,8 @@ const Todo=()=>{
         <input type="text" value={ntask} onChange={(ef) => setntask(ef.target.value)}></input>
         <input type="submit"></input>
         </form>
+
+
         {tasks.map((task)=>(
             <div className='task' key={task.nam}>
             <h2 className="taskc">{task.nam} </h2>
