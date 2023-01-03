@@ -3,25 +3,46 @@ import { useState, useEffect } from 'react'
 
 
 const Todo=()=>{
+
     const [tasks,settasks]= useState([{nam:"sign in with google",comp:false},{nam:"enjoy",comp:false}])
-    const [ntask,setntask]= useState()
+    const [ntask,setntask]= useState("")
+
+    const chck=()=>{
+        let nams = tasks.map(item=>item.nam)
+        if (nams.includes(ntask)){
+            return true
+        }
+        return false
+
+    }
+
     const subhand=(event)=>{
         event.preventDefault()
 
-        if (ntask!==""){
-        settasks([{nam:ntask,comp:false},...tasks])
-        setntask("")
-        }
-        else {
+        if (ntask===""){
             alert("empty text")
         }
+        else if (chck()) {
+            console.log("entered2")
+            alert("duplicates not allowed")
+        }
+        else {
+
+            settasks([{nam:ntask,comp:false},...tasks])
+            setntask("")
+        }
     }
+
+
+
+
     const subdel=(event)=>{
         event.preventDefault()
         settasks(tasks.map(item=>item.nam===event.target.attributes.t.value?{...item,comp:!item.comp}:item))
-
-
     }
+
+
+
     return (
         <div className="todo">
 
