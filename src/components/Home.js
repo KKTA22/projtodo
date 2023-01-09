@@ -1,18 +1,23 @@
-import React from 'react';
-import Todo from "./todo"
-import { auth } from '../services/firebase'
+import React from "react";
+import Todo from "./todo";
+import { auth } from "../services/firebase";
 
-import '../App.css';
+import "../App.css";
 
 const Home = ({ user }) => {
   return (
     <div className="home">
-      <h1>Hello, <span></span>{user.displayName}</h1>
+      <h1>
+        Hello, <span></span>
+        {user.displayName}
+      </h1>
       <img src={user.photoURL} alt="" />
-      <button className="button signout" onClick={() => auth.signOut()}>Sign out</button>
-      <Todo/>
+      <button className="button signout" onClick={() => auth.signOut()}>
+        Sign out
+      </button>
+      <Todo />
     </div>
-  )
-}
+  );
+};
 
 export default Home;
