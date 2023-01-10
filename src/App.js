@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>Welcome to Url shortner</h1>
+      <h1>Welcome to TODO</h1>
       {user ? <Home user={user} /> : <Login />}
     </div>
   );
