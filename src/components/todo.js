@@ -19,7 +19,7 @@ const Todo = () => {
   const subhand = (event) => {
     event.preventDefault();
 
-    if (ntask === "" || ntask.replaceAll(' ', '').length === 0) {
+    if (ntask === "" || ntask.replaceAll(" ", "").length === 0) {
       alert("empty text");
     } else if (chck()) {
       console.log("entered2");
@@ -41,6 +41,12 @@ const Todo = () => {
     );
   };
 
+  const handdel = (event) => {
+    event.preventDefault();
+    settasks(
+      tasks.filter((item) => item.nam !== event.target.attributes.t.value)
+    );
+  };
   return (
     <div className="todo">
       <form type="submit" className="inputform" onSubmit={subhand}>
@@ -59,6 +65,9 @@ const Todo = () => {
           <button t={task.nam} onClick={subdel}>
             {" "}
             toggle completetion{" "}
+          </button>
+          <button t={task.nam} onClick={handdel}>
+            Remove
           </button>
         </div>
       ))}
