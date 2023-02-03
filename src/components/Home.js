@@ -15,7 +15,7 @@ const Home = ({ user }) => {
       <button className="button signout" onClick={() => auth.signOut()}>
         Sign out
       </button>
-      <Todo />
+      <Todo uid={user.uid}/>
     </div>
   );
 };

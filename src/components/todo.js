@@ -1,11 +1,29 @@
 import { useState, useEffect } from "react";
 import "../App.css";
+const Todo = (uid) => {
+  //console.log(uid.uid)
+  const [tasks, settasks] = useState([]);
+  const c = 1;
+  useEffect(() => {
+    fetch("https://serv.kkant.repl.co/todos?uid=" + uid.uid)
+      .then((response) => response.json())
+      .then((data) => settasks(data));
+  }, [c]);
 
-const Todo = () => {
-  const [tasks, settasks] = useState([
-    { nam: "sign in with google", comp: false },
-    { nam: "enjoy", comp: false },
-  ]);
+  useEffect(() => {
+    if (tasks.length === 0) {
+      console.log("entered");
+      return;
+    } else {
+      fetch("https://serv.kkant.repl.co/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ uid: uid.uid, todos: tasks }),
+      });
+    }
+  }, [tasks]);
   const [ntask, setntask] = useState("");
 
   const chck = () => {
