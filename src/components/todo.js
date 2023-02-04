@@ -75,9 +75,9 @@ const Todo = (uid) => {
         ></input>
         <input type="submit"></input>
       </form>
-
+      <ul className="tasks">
       {tasks.map((task) => (
-        <div className={task.comp ? "yes" : "no"} key={task.nam}>
+        <li className={task.comp ? "yes" : "no"} key={task.nam}>
           <h2 className="taskc">{task.nam} </h2>
           <h3>completed:{task.comp ? "yes" : "no"}</h3>
           <button t={task.nam} onClick={subdel}>
@@ -87,8 +87,9 @@ const Todo = (uid) => {
           <button t={task.nam} onClick={handdel}>
             Remove
           </button>
-        </div>
+        </li>
       ))}
+      </ul>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 .app {
   text-align: center;
   align-content: center;
-  background: yellowgreen;
-  border: 5px solid black;
+  background: rgb(255, 255, 255);
+  /*border: 5px solid black;*/
   top:0%;
   left:0%;
 
@@ -18,16 +18,43 @@
 }
 
 .yes{
-  background:yellow;
-
+  background:green;
+  border: 1px solid black;
   padding: auto;
-  margin-left: 30%;
-  margin-right: 30%;
-
+  width:25%;
+  margin:2%;
 }
 .no{
-  background: red;
-  padding: auto;
-  margin-left: 30%;
-  margin-right: 30%;
+  background:red;
+  width:25%;
+  border: 1px solid black;
+  padding:auto;
+  margin:2%;
+
+}
+
+.home{
+  border: 2px solid black;
+  margin-left: 45%;
+  margin-right: 45%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 50%;
+}
+
+.button_signout{
+  margin-bottom: 5px;
+  padding: auto%;
+}
+.profphoto{
+  width: 10%;
+}
+ul{
+
+
+}
+li {
+  display: inline-flexbox;
+list-style-type: none;
+float:left;
 }
