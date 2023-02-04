@@ -20,15 +20,15 @@
 .yes{
   background:green;
   border: 1px solid black;
-  padding: auto;
   width:25%;
   margin:2%;
+
+
 }
 .no{
   background:red;
-  width:25%;
   border: 1px solid black;
-  padding:auto;
+  width:25%;
   margin:2%;
 
 }
@@ -50,11 +50,12 @@
   width: 10%;
 }
 ul{
-
+display:inline-flexbox;
 
 }
 li {
-  display: inline-flexbox;
+display: inline-flexbox;
 list-style-type: none;
 float:left;
+font-size:1.5vw;
 }
