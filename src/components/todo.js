@@ -3,11 +3,15 @@ import "../App.css";
 const Todo = (uid) => {
   //console.log(uid.uid)
   const [tasks, settasks] = useState([]);
+  const [loading, setloading] = useState(true);
   const c = 1;
   useEffect(() => {
     fetch("https://serv.kkant.repl.co/todos?uid=" + uid.uid)
       .then((response) => response.json())
-      .then((data) => settasks(data));
+      .then((data) => {
+        settasks(data);
+        setloading(false);
+      });
   }, [c]);
 
   useEffect(() => {
@@ -75,20 +79,21 @@ const Todo = (uid) => {
         ></input>
         <input type="submit"></input>
       </form>
+      {loading ? <h1>loading</h1> : <p></p>}
       <ul className="tasks">
-      {tasks.map((task) => (
-        <li className={task.comp ? "yes" : "no"} key={task.nam}>
-          <h2 className="taskc">{task.nam} </h2>
-          <h3>completed:{task.comp ? "yes" : "no"}</h3>
-          <button t={task.nam} onClick={subdel}>
-            {" "}
-            toggle completetion{" "}
-          </button>
-          <button t={task.nam} onClick={handdel}>
-            Remove
-          </button>
-        </li>
-      ))}
+        {tasks.map((task) => (
+          <li className={task.comp ? "yes" : "no"} key={task.nam}>
+            <h2 className="taskc">{task.nam} </h2>
+            <h3>completed:{task.comp ? "yes" : "no"}</h3>
+            <button t={task.nam} onClick={subdel}>
+              {" "}
+              toggle completetion{" "}
+            </button>
+            <button t={task.nam} onClick={handdel}>
+              Remove
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );
