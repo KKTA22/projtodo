@@ -3,11 +3,16 @@ import "../App.css";
 const Todo = (uid) => {
   //console.log(uid.uid)
   const [tasks, settasks] = useState([]);
+  const [loading,setloading]=useState(true);
   const c = 1;
   useEffect(() => {
     fetch("https://serv.kkant.repl.co/todos?uid=" + uid.uid)
       .then((response) => response.json())
       .then((data) => settasks(data));
+
+      return ()=>{setloading(false)}
+
+
   }, [c]);
 
   useEffect(() => {
@@ -75,6 +80,7 @@ const Todo = (uid) => {
         ></input>
         <input type="submit"></input>
       </form>
+      {loading?<h1>Loading</h1>:<></>}
       <ul className="tasks">
       {tasks.map((task) => (
         <li className={task.comp ? "yes" : "no"} key={task.nam}>
