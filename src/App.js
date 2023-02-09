@@ -8,10 +8,12 @@ import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [loading,setloading]=useState(true);
 
-  useEffect(() => {
+   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
+      setloading(false);
     });
   }, []);
 
@@ -20,7 +22,8 @@ function App() {
   return (
     <div className="app">
       <h1>Welcome to TODO</h1>
-      {user ? <Home user={user} /> : <Login />}
+      {loading?<h1>Loading</h1>:
+      (user ? <Home user={user} /> : <Login />)}
     </div>
   );
 }
